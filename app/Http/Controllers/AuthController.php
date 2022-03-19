@@ -6,18 +6,24 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
     public function register(Request $request){
         
-        // Need a validitor here
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'type' => 'required'
+        ]);
 
         $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'type' => $request['type'],
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+            'type' => $validatedData['type']
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -40,6 +46,14 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
+        ]);
+    }
+
+    public function logout(Request $request){
+        auth()->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'logout',
         ]);
     }
 }

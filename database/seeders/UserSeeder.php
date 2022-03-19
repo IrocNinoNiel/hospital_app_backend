@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
         $password = Hash::make('pass123');
 
         User::create([
+        
             'name' => 'Administrator',
             'email' => 'admin@test.com',
             'password' => $password,
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
         // And now let's generate a few dozen users for our app:
         for ($i = 0; $i < 10; $i++) {
             User::create([
+        
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => $password,
