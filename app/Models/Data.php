@@ -19,6 +19,7 @@ class Data extends Model
         'oncology_patient_count',
         'emergency_patient_count',
         'orthopedic_patient_count',
+        'other_division_count',
         'num_of_new_covid_cases',
         'num_of_active_cases',
         'num_of_covid_recovery',
