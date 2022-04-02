@@ -31,7 +31,8 @@ class UserSeeder extends Seeder
             'name' => 'Administrator',
             'email' => 'admin@test.com',
             'password' => $password,
-            'type'=>'administration'
+            'type'=>'administration',
+            'status'=>'active'
         ]);
 
         // And now let's generate a few dozen users for our app:
@@ -41,7 +42,8 @@ class UserSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => $password,
-                'type'=>'user'
+                'type'=>'user',
+                'status'=>'active'
             ]);
         }
     }

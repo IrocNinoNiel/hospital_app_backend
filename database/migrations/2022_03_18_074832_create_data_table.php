@@ -24,6 +24,8 @@ class CreateDataTable extends Migration
             $table->integer('oncology_patient_count');
             $table->integer('emergency_patient_count');
             $table->integer('orthopedic_patient_count');
+            $table->integer('ob_patient_count');
+            $table->integer('ob_er_patient_count');
             $table->integer('other_division_count');
             $table->integer('num_of_new_covid_cases');
             $table->integer('num_of_active_cases');

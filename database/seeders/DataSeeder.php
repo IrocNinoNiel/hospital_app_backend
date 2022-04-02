@@ -26,6 +26,8 @@ class DataSeeder extends Seeder
             'oncology_patient_count'=>100,
             'emergency_patient_count'=>200,
             'orthopedic_patient_count'=>200,
+            'ob_patient_count'=>200,
+            'ob_er_patient_count'=>200,
             'other_division_count'=>50,
             'num_of_new_covid_cases'=>500,
             'num_of_active_cases'=>1000,

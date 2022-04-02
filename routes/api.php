@@ -17,18 +17,19 @@ use App\Http\Controllers\DataController;
 |
 */
 
-// Route::middleware('auth:sanctum')->group(function(){
-//     Route::resource('datas',DataController::class);
-//     Route::resource('appointment',AppointmentController::class);
-//     Route::get('/logout', [AuthController::class, 'logout']);
-//     Route::get('/user',function(Request $request){
-//         return $request->user();
-//     });
-// });
-
+Route::middleware('auth:sanctum')->group(function(){
+    // Route::resource('datas',DataController::class);
+    Route::put('/datas/{id}',[DataController::class,'update']);
+    Route::resource('appointment',AppointmentController::class);
+    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/user',function(Request $request){
+        return $request->user();
+    });
+});
+Route::get('/datas',[DataController::class,'index']);
 
 // To be protected
-Route::resource('datas',DataController::class);
+// Route::resource('datas',DataController::class);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
