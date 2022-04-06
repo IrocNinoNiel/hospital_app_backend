@@ -49,6 +49,16 @@ class AuthController extends Controller
         ]);
     }
 
+    public function getAllUser(){
+        try{
+            $datas = User::all();
+        } catch(\Exception $exception){
+            return response()->json(['error'=>$exception->getMessage()], 422);
+        }
+
+        return response()->json($datas);
+    }
+
     public function logout(Request $request){
         auth()->user()->tokens()->delete();
 

@@ -43,7 +43,7 @@ class DataController extends Controller
     {
         try{
 
-            $this->validate($request,[
+            $validated = $request->validate([
                 'num_of_current_patient'=>'required|numeric',
                 'num_of_discharge'=>'required|numeric',
                 'num_of_admits'=>'required|numeric',
@@ -69,6 +69,33 @@ class DataController extends Controller
                 'total_wards_bed'=>'required|numeric',
                 'total_num_of_beds'=>'required|numeric',
             ]);
+
+            // $this->validate($request,[
+            //     'num_of_current_patient'=>'required|numeric',
+            //     'num_of_discharge'=>'required|numeric',
+            //     'num_of_admits'=>'required|numeric',
+            //     'num_of_total_patient'=>'required|numeric',
+            //     'cardiology_patient_count'=>'required|numeric',
+            //     'telemetry_patient_count'=>'required|numeric',
+            //     'oncology_patient_count'=>'required|numeric',
+            //     'emergency_patient_count'=>'required|numeric',
+            //     'orthopedic_patient_count'=>'required|numeric',
+            //     'ob_patient_count'=>'required|numeric',
+            //     'ob_er_patient_count'=>'required|numeric',
+            //     'other_division_count'=>'required|numeric',
+            //     'num_of_new_covid_cases'=>'required|numeric',
+            //     'num_of_active_cases'=>'required|numeric',
+            //     'num_of_covid_recovery'=>'required|numeric',
+            //     'num_of_covid_deaths'=>'required|numeric',
+            //     'num_of_total_covid_cases'=>'required|numeric',
+            //     'percent_of_icu_bed_used'=>'required|numeric',
+            //     'percent_of_isolation_bed_used'=>'required|numeric',
+            //     'percent_of_wards_bed_used'=>'required|numeric',
+            //     'total_icu_bed'=>'required|numeric',
+            //     'total_isolation_bed'=>'required|numeric',
+            //     'total_wards_bed'=>'required|numeric',
+            //     'total_num_of_beds'=>'required|numeric',
+            // ]);
 
             $data = new Data();
 
@@ -98,7 +125,7 @@ class DataController extends Controller
             $data->total_num_of_beds = $request->total_num_of_beds;
 
             $data->save();
-            return response()->json('Article Added',200);
+            return response()->json('Dashboard Updated',200);
         } catch(\Exception $exception){
             return response()->json(['error'=>$exception->getMessage()], 422);
         }
@@ -136,6 +163,8 @@ class DataController extends Controller
     public function update(Request $request, $id)
     {
         try{
+
+            // return response()->json($request,422);
 
             $this->validate($request,[
                 'num_of_current_patient'=>'required|numeric',

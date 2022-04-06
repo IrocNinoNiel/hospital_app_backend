@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::put('/datas/{id}',[DataController::class,'update']);
     Route::resource('appointment',AppointmentController::class);
     Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/getalluser', [AuthController::class, 'getAllUser']);
     Route::get('/user',function(Request $request){
         return $request->user();
     });
